@@ -1,0 +1,80 @@
+﻿@model FitnessTracker.Models.ExerciseSession
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ExerciseSession</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ExerciseSessionID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+                <button id="startTimeNowButton" class="btn btn-default">Now</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+                <button id="endTimeNowButton" class="btn btn-default">Now</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExerciseTypeID, "ExerciseTypeID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3" id="ExerciseTypeDropdown">
+                <div class="input-group">
+                @Html.DropDownList("ExerciseTypeID", null, htmlAttributes: new { @class = "form-control" })
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="ShowNewDescriptionFormButton"><icon class="glyphicon glyphicon-plus"></icon></button>
+                    </span>
+                </div>
+                @Html.ValidationMessageFor(model => model.ExerciseTypeID, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3" id="NewExerciseTypeForm">
+                <div class="input-group">
+                    <input type="text" id="NewExerciseTypeDescription" class="form-control" placeholder="New exercise type..."/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="NewExerciseTypeOkButton"><icon class="glyphicon glyphicon-ok"></icon></button>
+                        <button class="btn btn-default" id="NewExerciseTypeCancelButton"><icon class="glyphicon glyphicon-remove"></icon></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript" src="~/Scripts/ExerciseSessionEdit.js"></script>
+<script type="text/javascript" src="~/Scripts/App/AddNewExerciseTests.js"></script>
+}

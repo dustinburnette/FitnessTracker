@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FitnessTracker.Models.ExerciseSession>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+            @Html.DisplayNameFor(model => model.Exercise.Description)
+       
+            @Html.DisplayNameFor(model => model.StartTime)
+       
+            @Html.DisplayNameFor(model => model.EndTime)
+       
+<ul class="session-list">
+@foreach (var item in Model) {
+     <li>   
+            <h4>@Html.DisplayFor(modelItem => item.Exercise.Description)</h4>
+        <div>
+            <span>@Html.DisplayFor(modelItem => item.StartTime)</span>
+                
+                            -
+            <span>@Html.DisplayFor(modelItem => item.EndTime)</span>
+        </div>
+       
+         <div>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ExerciseSessionID }) 
+            @Html.ActionLink("Details", "Details", new { id=item.ExerciseSessionID }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.ExerciseSessionID })
+         </div>
+     </li>
+      
+}
+
+</ul>

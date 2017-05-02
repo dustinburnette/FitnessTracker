@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+ul.session-list
+{
+    list-style: none;
+}
+#NewExerciseTypeForm{
+    display: none;
+}
