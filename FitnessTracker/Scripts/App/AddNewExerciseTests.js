@@ -10,6 +10,7 @@
         event.preventDefault();
         $('#ExerciseTypeDropdown').show();
         $('#NewExerciseTypeForm').hide();
+        $('#NewExerciseTypeDescription').val('');
 
     });
     // api/ExerciseTypesApi
@@ -26,6 +27,6 @@
 
             $('#ExerciseTypeDropdown').show();
             $('#NewExerciseTypeForm').hide();
-        });
+            });
     });
 });
